@@ -1,0 +1,25 @@
+h2{
+  text-align: center;
+}
+.example-form{
+  width: 100%;
+}
+.example-full-width{
+  width:100%;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+.btn{
+ background-color: green;
+ border: 1px solid green;
+padding:2px 20px;
+display: flex;
+right: 0;
+position: absolute;
+margin-right: 20px;
+}
+.radio-btn{
+  position: relative;
+  top: 10px;
+}

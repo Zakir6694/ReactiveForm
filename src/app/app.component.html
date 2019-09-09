@@ -1,0 +1,38 @@
+<form #userlogin = "ngForm" (ngSubmit) ="userlogin.valid && onClickSubmit(userlogin.value)" >
+  <h2>Sign In Form</h2>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Name" name="name" [(ngModel)]="name" #loginName="ngModel" required>
+    <mat-hint *ngIf="userlogin.submitted">
+      <mat-hint align="end" *ngIf="loginName.errors?.required">Name is Required</mat-hint>
+    </mat-hint>
+  </mat-form-field>
+  <mat-radio-group>
+  <mat-radio-button value="1">Male</mat-radio-button>
+  <mat-radio-button value="2">Female</mat-radio-button>
+  </mat-radio-group>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Occupation">
+  </mat-form-field>
+  <mat-form-field class="example-form">
+  <input matInput [matDatepicker]="picker" placeholder="Date of Birth">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Mobile Number">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Email" email [(ngModel)]="email" name="email" #loginEmail="ngModel" required>
+    <mat-hint *ngIf="userlogin.submitted">
+       <mat-hint *ngIf="loginEmail.value?.length <=0">Enter Email</mat-hint>
+      <mat-hint *ngIf="loginEmail.errors?.email">Email is Invalid</mat-hint>
+    </mat-hint>
+  </mat-form-field>
+  <mat-form-field class="example-form">
+    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [(ngModel)]="pass" name="pass" #password="ngModel" required>
+    <mat-hint *ngIf="userlogin.submitted">
+      <mat-hint *ngIf="password.errors?.required">Password is Required</mat-hint>
+    </mat-hint>
+  </mat-form-field>
+  <button class="btn" mat-button>Submit</button>
+</form>
