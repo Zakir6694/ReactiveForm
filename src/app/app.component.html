@@ -1,38 +1,24 @@
-<form #userlogin = "ngForm" (ngSubmit) ="userlogin.valid && onClickSubmit(userlogin.value)" >
-  <h2>Sign In Form</h2>
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Name" name="name" [(ngModel)]="name" #loginName="ngModel" required>
-    <mat-hint *ngIf="userlogin.submitted">
-      <mat-hint align="end" *ngIf="loginName.errors?.required">Name is Required</mat-hint>
-    </mat-hint>
+<div class="reactiveDiv">
+	<h3>Get Started ! Register Here</h3>
+	<form [formGroup]="reactiveForm">
+		<mat-form-field class="input-width">
+			<input matInput type="text" email placeholder="Email" name="emailId" formControlName="emailId">
+    <mat-hint align="end" *ngIf="erroMsg('emailId')">Email is required</mat-hint>
+    <mat-hint *ngIf="">Email is not valid</mat-hint>
   </mat-form-field>
-  <mat-radio-group>
-  <mat-radio-button value="1">Male</mat-radio-button>
-  <mat-radio-button value="2">Female</mat-radio-button>
-  </mat-radio-group>
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Occupation">
+  <mat-form-field class="input-width">
+			<input matInput placeholder="Password" name="pass" formControlName="pass">
+    <mat-hint align="end" *ngIf="erroMsg('pass')">Password is required</mat-hint>
+    <mat-hint *ngIf="">Password is not strong </mat-hint>
   </mat-form-field>
-  <mat-form-field class="example-form">
-  <input matInput [matDatepicker]="picker" placeholder="Date of Birth">
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Mobile Number">
+  <mat-form-field class="input-width">
+			<input matInput type="password" placeholder="Confirm Password" name="confirm" formControlName="confirm">
+      <mat-hint align="end" *ngIf="erroMsg('confirm')">Confirm Password is must</mat-hint>
+    <mat-hint *ngIf="" >Password Don't Match</mat-hint>
   </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Email" email [(ngModel)]="email" name="email" #loginEmail="ngModel" required>
-    <mat-hint *ngIf="userlogin.submitted">
-       <mat-hint *ngIf="loginEmail.value?.length <=0">Enter Email</mat-hint>
-      <mat-hint *ngIf="loginEmail.errors?.email">Email is Invalid</mat-hint>
-    </mat-hint>
-  </mat-form-field>
-  <mat-form-field class="example-form">
-    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [(ngModel)]="pass" name="pass" #password="ngModel" required>
-    <mat-hint *ngIf="userlogin.submitted">
-      <mat-hint *ngIf="password.errors?.required">Password is Required</mat-hint>
-    </mat-hint>
-  </mat-form-field>
-  
-</form>
+  <div class="wrap-btn">
+  <button type="submit" class="registerBtn" (click)="reactiveSubmit()">Register</button>
+  <button type ="button" class="loginBtn">Login</button>
+  </div>
+  </form>
+</div>

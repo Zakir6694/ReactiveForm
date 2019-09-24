@@ -1,25 +1,20 @@
-h2{
-  text-align: center;
-}
-.example-form{
+.input-width{
   width: 100%;
 }
-.example-full-width{
-  width:100%;
+.reactiveDiv{
+  border: 1px solid grey;
+  padding:20px;
+  width:50%;
 }
-.mat-radio-button ~ .mat-radio-button {
-  margin-left: 16px;
+.wrap-btn{
+  padding-top: 20px;
 }
-.btn{
- background-color: green;
- border: 1px solid green;
-padding:2px 20px;
-display: flex;
-right: 0;
-position: absolute;
-margin-right: 20px;
+.loginBtn{
+  float: right;
 }
-.radio-btn{
-  position: relative;
-  top: 10px;
+@media only screen and (max-width:768px){
+  .reactiveDiv{
+    width:100%;
+    display: table-cell;
+  }
 }
