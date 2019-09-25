@@ -59,14 +59,43 @@ loginModal(): void {
   templateUrl: 'login-modal.html',
   styleUrls: ['login-modal.css']
 })
-export class loginModal {
-
+export class loginModal implements OnInit {
+ loginForm:FormGroup;
   constructor(
     public dialogRef: MatDialogRef<loginModal>,
-    @Inject(MAT_DIALOG_DATA) public data) {}
+    @Inject(MAT_DIALOG_DATA) public data,private lg:FormBuilder) {}
 
   closeBtn(): void {
     this.dialogRef.close();
+  }
+  ngOnInit(){
+   this.loginForm = this.lg.group({
+    emailId :["",[Validators.required]],
+    pass :["",[Validators.required]]
+   });
+ }
+ isFieldValid(formGroup: FormGroup) {
+  Object.keys(formGroup.controls).forEach(field => {
+    const control = formGroup.get(field);
+    if (control instanceof FormControl) {
+      control.markAsTouched({ onlySelf: true });
+    } else if (control instanceof FormGroup) {
+      this.isFieldValid(control);
+    }
+  });
+}
+loginBtn(){
+  if(this.loginForm.valid){
+      alert('You have login to the System')
+      this.closeBtn();
+  }
+  else{
+    this.isFieldValid(this.loginForm);
+  }
+}
+
+  contact(){
+    alert("We will forward you the password");
   }
 
 }

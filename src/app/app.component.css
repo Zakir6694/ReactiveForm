@@ -1,6 +1,9 @@
 .input-width{
   width: 100%;
 }
+h3{
+  text-align: center;
+}
 .reactiveDiv{
   border: 1px solid grey;
   padding:20px;
@@ -15,6 +18,12 @@
 }
 .registerBtn{
   background-color: grey;
+}
+.close-arrow{
+  float:right;
+  cursor: pointer;
+  position: relative;
+  top:-35px;
 }
 @media only screen and (max-width:768px){
   .reactiveDiv{

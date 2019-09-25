@@ -1,6 +1,7 @@
 <div class="loginForm">
+  <span class="close-arrow" (click)="closeBtn()">X</span>
 	<h3>Login Here</h3>
-	<form>
+	<form [formGroup]="loginForm">
 		<mat-form-field class="input-width">
 			<input matInput type="text" email placeholder="Email" name="emailId" formControlName="emailId">
     <mat-hint align="end" *ngIf="">Email is required</mat-hint>
@@ -12,8 +13,8 @@
     <mat-hint *ngIf="">Password is not strong </mat-hint>
   </mat-form-field>
   <div class="wrap-btn">
-  <button type="submit" mat-button class="registerBtn" >Register</button>
-  <button type ="button" mat-button class="loginBtn">Login</button>
+  <button type ="button" (click)="loginBtn()"mat-button class="loginBtn">Login</button>
+  <a href="#" (click)="contact()">Forgot Password?</a>
   </div>
   </form>
 </div>
