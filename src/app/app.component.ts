@@ -1,5 +1,6 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit ,Inject} from '@angular/core';
 import {FormGroup ,FormControl, Validators,FormBuilder,AbstractControl} from '@angular/forms';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'my-app',
@@ -9,7 +10,7 @@ import {FormGroup ,FormControl, Validators,FormBuilder,AbstractControl} from '@a
 export class AppComponent implements OnInit {
   reactiveForm:FormGroup;
   validForm:boolean=false;
-  constructor(private fb:FormBuilder){}
+  constructor(private fb:FormBuilder,public dialog:MatDialog){}
  ngOnInit(){
    this.reactiveForm = this.fb.group({
     emailId :["",[Validators.required]],
@@ -44,5 +45,28 @@ reactiveSubmit(){
     this.isFieldValid(this.reactiveForm);
   }
 }
+loginModal(): void {
+    const dialogRef = this.dialog.open(loginModal, {
+      width: '400px',
+      height:'300px',
+      data: {}
+    });
+}
+
+}
+@Component({
+  selector: 'login-modal',
+  templateUrl: 'login-modal.html',
+  styleUrls: ['login-modal.css']
+})
+export class loginModal {
+
+  constructor(
+    public dialogRef: MatDialogRef<loginModal>,
+    @Inject(MAT_DIALOG_DATA) public data) {}
+
+  closeBtn(): void {
+    this.dialogRef.close();
+  }
 
 }
