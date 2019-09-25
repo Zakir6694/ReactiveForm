@@ -30,6 +30,10 @@ export class AppComponent implements OnInit {
   });
 }
 
+passMatch(confirm,pass){
+  return this.reactiveForm.get(confirm).value == this.reactiveForm.get(pass).value && this.reactiveForm.get(confirm).value !="" && this.reactiveForm.get(pass).value !="" ;
+}
+
 reactiveSubmit(){
   if(this.reactiveForm.valid){
       alert('You have submitted the form successfully')

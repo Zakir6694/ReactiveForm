@@ -14,7 +14,7 @@
   <mat-form-field class="input-width">
 			<input matInput type="password" placeholder="Confirm Password" name="confirm" formControlName="confirm">
       <mat-hint align="end" *ngIf="erroMsg('confirm')">Confirm Password is must</mat-hint>
-    <mat-hint *ngIf="" >Password Don't Match</mat-hint>
+    <mat-hint *ngIf="passMatch('confirm','pass')" >Password Don't Match</mat-hint>
   </mat-form-field>
   <div class="wrap-btn">
   <button type="submit" class="registerBtn" (click)="reactiveSubmit()">Register</button>
