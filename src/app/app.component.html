@@ -7,7 +7,7 @@
     <mat-hint *ngIf="">Email is not valid</mat-hint>
   </mat-form-field>
   <mat-form-field class="input-width">
-			<input matInput placeholder="Password" name="pass" formControlName="pass">
+			<input matInput type="password" placeholder="Password" name="pass" formControlName="pass">
     <mat-hint align="end" *ngIf="erroMsg('pass')">Password is required</mat-hint>
     <mat-hint *ngIf="">Password is not strong </mat-hint>
   </mat-form-field>
@@ -17,8 +17,8 @@
     <mat-hint *ngIf="passMatch('confirm','pass')" >Password Don't Match</mat-hint>
   </mat-form-field>
   <div class="wrap-btn">
-  <button type="submit" class="registerBtn" (click)="reactiveSubmit()">Register</button>
-  <button type ="button" class="loginBtn">Login</button>
+  <button type="submit" mat-button class="registerBtn" (click)="reactiveSubmit()">Register</button>
+  <button type ="button" mat-button class="loginBtn">Login</button>
   </div>
   </form>
 </div>

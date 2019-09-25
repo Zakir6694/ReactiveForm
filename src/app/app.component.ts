@@ -8,6 +8,7 @@ import {FormGroup ,FormControl, Validators,FormBuilder,AbstractControl} from '@a
 })
 export class AppComponent implements OnInit {
   reactiveForm:FormGroup;
+  validForm:boolean=false;
   constructor(private fb:FormBuilder){}
  ngOnInit(){
    this.reactiveForm = this.fb.group({
@@ -31,11 +32,12 @@ export class AppComponent implements OnInit {
 }
 
 passMatch(confirm,pass){
-  return this.reactiveForm.get(confirm).value == this.reactiveForm.get(pass).value && this.reactiveForm.get(confirm).value !="" && this.reactiveForm.get(pass).value !="" ;
+  return this.reactiveForm.get(confirm).value != this.reactiveForm.get(pass).value && this.reactiveForm.get(pass).value !='' && this.reactiveForm.get(confirm).value !='';
 }
 
 reactiveSubmit(){
-  if(this.reactiveForm.valid){
+   const newVar = this.reactiveForm.value;
+  if(this.reactiveForm.valid && newVar.confirm == newVar.pass){
       alert('You have submitted the form successfully')
   }
   else{
@@ -43,7 +45,4 @@ reactiveSubmit(){
   }
 }
 
- /*errorMsg(field:string){
-   return this.reactiveForm.get(field).valid && this.reactiveForm.get(field).touched;
- }*/
 }
